@@ -23,7 +23,21 @@ local setting_overrides = require 'decorators.setting_overrides'
 local timeout = require 'decorators.timeout'
 local random = require 'common.random'
 local map_maker = require 'dmlab.system.map_maker'
+local themes = require 'themes.themes'
+local texture_sets = require 'themes.texture_sets'
 local randomMap = random(map_maker:randomGen())
+
+local custom_floors = require 'decorators.custom_floors'
+
+
+local theme = themes.fromTextureSet{
+    textureSet = texture_sets.CUSTOMIZABLE_FLOORS,
+    randomizeFloorTextures = true,
+}
+
+local configTable = {}
+configTable["theme"] = theme
+
 
 local factory = {}
 
@@ -93,6 +107,7 @@ function factory.createLevelApi(kwargs)
       apiParams = kwargs,
       decorateWithTimeout = true
   }
+  custom_floors.decorate(api)
   return api
 end
 
