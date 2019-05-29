@@ -23,20 +23,20 @@ local setting_overrides = require 'decorators.setting_overrides'
 local timeout = require 'decorators.timeout'
 local random = require 'common.random'
 local map_maker = require 'dmlab.system.map_maker'
-local themes = require 'themes.themes'
-local texture_sets = require 'themes.texture_sets'
 local randomMap = random(map_maker:randomGen())
 
-local custom_floors = require 'decorators.custom_floors'
+local tensor = require 'dmlab.system.tensor'
 
-
-local theme = themes.fromTextureSet{
-    textureSet = texture_sets.CUSTOMIZABLE_FLOORS,
-    randomizeFloorTextures = true,
+local POSSIBLE_COLORS = {
+    red = {1, 0, 0, 1},
+    green = {0, 1, 0, 1},
+    blue = {0, 0, 1, 1},
+    white = {1, 1, 1, 1},
+    black = {0, 0, 0, 1}
 }
 
-local configTable = {}
-configTable["theme"] = theme
+-- local FLOOR_TEXTURE_NAME = 'textures/map/lab_games/lg_style_01_floor_orange_d.tga'
+local FLOOR_TEXTURE_NAME = 'textures/map/lab_games/lg_style_01_wall_green_d.tga'
 
 
 local factory = {}
@@ -101,13 +101,38 @@ function factory.createLevelApi(kwargs)
     return map
   end
 
-  custom_observations.decorate(api)
+  local function createSingleColorTexture(color)
+      print('inside createSingleColorTexture')
+      print(color)
+      local texture = tensor.ByteTensor(1024, 1024, 4)
+      local r, g, b = unpack(POSSIBLE_COLORS[color])
+      texture:select(3, 1):fill(r * 255)
+      texture:select(3, 2):fill(g * 255)
+      texture:select(3, 3):fill(b * 255)
+      return texture
+  end
+
+  function api:modifyTexture(textureName, tensorData)
+      if textureName == FLOOR_TEXTURE_NAME then
+          print('inside modifyTexture')
+          print(textureName)
+          print(tensorData)
+          -- print(tensorData)
+          -- local replacementTexture = createSingleColorTexture('red')
+          -- print(replacementTexture)
+          -- tensorData = replacementTexture
+          tensorData:add{0, 0, 0, 255}
+          print(tensorData)
+          return true
+      end
+      return false
+  end
+
   setting_overrides.decorate{
       api = api,
       apiParams = kwargs,
       decorateWithTimeout = true
   }
-  custom_floors.decorate(api)
   return api
 end
 

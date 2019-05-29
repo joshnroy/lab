@@ -27,6 +27,13 @@ local TRAIN_CONFIGS = {
     },
     {
         pickups = {
+            A = 'hat',
+            B = 'can',
+        },
+        replaceWallAndFloor = true,
+    },
+    {
+        pickups = {
             A = 'cake',
             B = 'balloon',
         },

@@ -17,10 +17,19 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 local factory = require 'factories.seek_avoid_factory'
 
-return factory.createLevelApi{
+-- local texture_sets = require 'themes.texture_sets'
+-- local themes = require 'themes.themes'
+-- local theme = themes.fromTextureSet{
+--     textureSet = texture_sets.CUSTOMIZABLE_FLOORS,
+--     randomizeFloorTextures = true,
+-- }
+
+local api = factory.createLevelApi{
     mapName = 'seekavoid_arena_01',
     episodeLengthSeconds = 20,
     camera = {250, -100, 900},
     floorColor = 2,
     wallColor = 2
 }
+
+return api
