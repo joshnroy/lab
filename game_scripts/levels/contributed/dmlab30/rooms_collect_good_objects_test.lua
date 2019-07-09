@@ -27,8 +27,18 @@ local TEST_CONFIGS = {
         replaceWallAndFloor = true,
     }
 }
+local VALIDATION_CONFIGS = {
+    {
+        pickups = {
+            A = 'hat',
+            B = 'can',
+        },
+        replaceWallAndFloor = true,
+        -- joshReplaceWallAndFloor = true,
+    }
+}
 
 return test_only.decorate(factory.createLevelApi{
     episodeLengthSeconds = 60,
-    configs = TEST_CONFIGS,
+    configs = VALIDATION_CONFIGS,
 })

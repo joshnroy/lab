@@ -27,13 +27,6 @@ local TRAIN_CONFIGS = {
     },
     {
         pickups = {
-            A = 'hat',
-            B = 'can',
-        },
-        replaceWallAndFloor = true,
-    },
-    {
-        pickups = {
             A = 'cake',
             B = 'balloon',
         },
@@ -46,6 +39,36 @@ local TRAIN_CONFIGS = {
         },
         replaceWallAndFloor = true,
     }
+}
+local IMG_GENERATION = {
+    {
+        pickups = {
+            A = 'cake',
+            B = 'hat',
+        },
+        replaceWallAndFloor = true,
+    },
+    {
+        pickups = {
+            A = 'balloon',
+            B = 'can',
+        },
+        replaceWallAndFloor = true,
+    },
+    {
+        pickups = {
+            A = 'cake',
+            B = 'can',
+        },
+        replaceWallAndFloor = false,
+    },
+    {
+        pickups = {
+            A = 'balloon',
+            B = 'hat',
+        },
+        replaceWallAndFloor = false,
+    },
 }
 
 return factory.createLevelApi{

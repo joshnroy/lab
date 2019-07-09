@@ -86,6 +86,15 @@ local REPLACE_TEXTURE_MAP = {
         'textures/map/lab_games/lg_style_02_floor_light_m.tga',
 }
 
+local JOSH_REPLACE_TEXTURE_MAP = {
+    ['textures/map/lab_games/lg_style_01_floor_orange_d.tga'] =
+        'textures/map/lab_games/lg_style_02_floor_purple_bright_d.tga',
+    ['textures/map/lab_games/lg_style_01_wall_green_d.tga'] =
+        'textures/map/lab_games/lg_style_05_wall_blue_bright_d.tga',
+    ['textures/map/lab_games/lg_style_01_floor_light_m.tga'] =
+        'textures/map/lab_games/lg_style_02_floor_light_m.tga',
+}
+
 local factory = {}
 
 --[[ Creates an API for collect good objects tasks.
@@ -174,6 +183,8 @@ function factory.createLevelApi(kwargs)
   function api:replaceTextureName(textureName)
     if api._replaceWallAndFloor then
       return REPLACE_TEXTURE_MAP[textureName]
+    elseif api._joshReplaceWallAndFloor then
+      return JOSH_REPLACE_TEXTURE_MAP[textureName]
     end
   end
 
