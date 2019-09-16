@@ -18,15 +18,15 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 local factory = require 'factories.rooms.collect_good_objects_factory'
 local test_only = require 'decorators.test_only'
 
-local TEST_CONFIGS = {
-    {
-        pickups = {
-            A = 'hat',
-            B = 'can',
-        },
-        replaceWallAndFloor = true,
-    }
-}
+-- local TEST_CONFIGS = {
+--     {
+--         pickups = {
+--             A = 'hat',
+--             B = 'can',
+--         },
+--         replaceWallAndFloor = true,
+--     }
+-- }
 local VALIDATION_CONFIGS = {
     {
         pickups = {
@@ -34,7 +34,6 @@ local VALIDATION_CONFIGS = {
             B = 'can',
         },
         replaceWallAndFloor = true,
-        -- joshReplaceWallAndFloor = true,
     }
 }
 
