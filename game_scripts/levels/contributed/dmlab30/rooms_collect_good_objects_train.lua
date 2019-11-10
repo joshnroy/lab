@@ -38,7 +38,35 @@ local TRAIN_CONFIGS = {
             B = 'balloon',
         },
         replaceWallAndFloor = true,
-    }
+    },
+    {
+        pickups = {
+            A = 'hat',
+            B = 'balloon',
+        },
+        replaceWallAndFloor = true,
+    },
+    {
+        pickups = {
+            A = 'hat',
+            B = 'balloon',
+        },
+        replaceWallAndFloor = false,
+    },
+    {
+        pickups = {
+            A = 'cake',
+            B = 'can',
+        },
+        replaceWallAndFloor = true,
+    },
+    {
+        pickups = {
+            A = 'cake',
+            B = 'can',
+        },
+        replaceWallAndFloor = false,
+    },
 }
 local IMG_GENERATION = {
     {
